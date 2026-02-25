@@ -23,7 +23,7 @@
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         $valor1 = $_POST['valor1'];
         $valor2 = $_POST['valor2'];
-        $subtrair = $valor1 - $valor2;
+        $subtrair = $valor2 - $valor1;
         echo "A subtração é: $subtrair";
     }
 ?>
