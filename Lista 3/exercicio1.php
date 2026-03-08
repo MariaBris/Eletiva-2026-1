@@ -12,25 +12,25 @@
 <form method="post">
 <div class="mb-3">
               <label for="num1" class="form-label">Insira o 1º número:</label>
-              <input type="number" id="num1" name="num1" class="form-control" required="">
+              <input type="text" id="num1" name="num1" class="form-control" required="">
             </div><div class="mb-3">
               <label for="num2" class="form-label">Insira o 2º número:</label>
-              <input type="number" id="num2" name="num2" class="form-control" required="">
+              <input type="text" id="num2" name="num2" class="form-control" required="">
             </div><div class="mb-3">
               <label for="num3" class="form-label">Insira o 3º número:</label>
-              <input type="number" id="num3" name="num3" class="form-control" required="">
+              <input type="text" id="num3" name="num3" class="form-control" required="">
             </div><div class="mb-3">
               <label for="num4" class="form-label">Insira o 4º número:</label>
-              <input type="number" id="num4" name="num4" class="form-control" required="">
+              <input type="text" id="num4" name="num4" class="form-control" required="">
             </div><div class="mb-3">
               <label for="num5" class="form-label">Insira o 5º número:</label>
-              <input type="number" id="num5" name="num5" class="form-control" required="">
+              <input type="text" id="num5" name="num5" class="form-control" required="">
             </div><div class="mb-3">
               <label for="num6" class="form-label">Insira o 6º número:</label>
-              <input type="number" id="num6" name="num6" class="form-control" required="">
+              <input type="text" id="num6" name="num6" class="form-control" required="">
             </div><div class="mb-3">
               <label for="num7" class="form-label">Insira o 7º número:</label>
-              <input type="number" id="num7" name="num7" class="form-control" required="">
+              <input type="text" id="num7" name="num7" class="form-control" required="">
             </div>
 <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
