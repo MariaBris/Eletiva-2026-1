@@ -13,7 +13,7 @@
         <h1>Exercício 2</h1>
         <form method="post">
             <?php
-            for($i = 0; $i <3; $i++)
+            for($i = 0; $i < 5; $i++)
             echo '<div class="mb-3">
               <label for="nome[]" class="form-label">Insira o nome:</label>
               <input type="text" id="nome[]" name="nome[]" class="form-control" required="">
@@ -33,7 +33,7 @@
             if($_SERVER['REQUEST_METHOD'] == "POST"){
                 $alunos = [];
                 $media = 0;
-                for($i = 0; $i < 3; $i++){
+                for($i = 0; $i < 5; $i++){
                     $nome = $_POST['nome'][$i];
                     $nota1 = $_POST['nota1'][$i];
                     $nota2 = $_POST['nota2'][$i];
