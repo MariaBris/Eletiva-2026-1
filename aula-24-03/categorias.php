@@ -16,7 +16,7 @@
               
                 <tr>
                   <td>1</td>
-                  <td>Exemplo</td>/**LAYOUT DE CRUD*/
+                  <td>Exemplo</td>/*LAYOUT DE CRUD*/
                   <td class="d-flex gap-2">
                     <a href="alterar_categoria.php" class="btn btn-sm btn-warning">Editar</a>
                     <a href="consultar_categoria.php" class="btn btn-sm btn-info">Consultar</a>
