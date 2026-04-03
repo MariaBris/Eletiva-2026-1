@@ -11,7 +11,7 @@
 <h1>Exercício 5</h1>
 <form method="post">
     <?php
-    for($i = 0; $i < 3; $i++)
+    for($i = 0; $i < 5; $i++)
         echo '<div class="mb-3">
               <label for="nome[]" class="form-label">Insira o título do livro:</label>
               <input type="text" id="nome[]" name="nome[]" class="form-control" required="">
@@ -25,7 +25,7 @@
 <?php
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         $livros = [];
-        for($i = 0;$i < 3;$i++){
+        for($i = 0;$i < 5;$i++){
             $nome = $_POST['nome'][$i];
             $qtde = $_POST['qtde'][$i];
             $livros[$nome] = $qtde;
