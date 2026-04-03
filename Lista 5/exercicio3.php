@@ -13,7 +13,7 @@
         <h1></h1>
         <form method="post">
             <?php
-              for($i = 0; $i < 3; $i++)
+              for($i = 0; $i < 5; $i++)
                 echo '<div class="mb-3">
                 <label for="cod[]" class="form-label">Insira o código do produto:</label>
                 <input type="text" id="cod[]" name="cod[]" class="form-control" required="">
@@ -29,7 +29,7 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     $produtos = [];
-    for($i = 0; $i < 3; $i++){
+    for($i = 0; $i < 5; $i++){
         $cod = $_POST['cod'][$i];
         $nome = $_POST['nome'][$i];
         $preco = $_POST['preco'][$i];
