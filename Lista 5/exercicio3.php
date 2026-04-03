@@ -26,27 +26,28 @@
                 </div>'?>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
-        <?php
-  if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $produto = [];
+<?php
+if($_SERVER['REQUEST_METHOD'] == "POST"){
     $produtos = [];
     for($i = 0; $i < 3; $i++){
-      $cod = $_POST['cod'][$i];
-      $nome = $_POST['nome'][$i];
-      $preco = $_POST['preco'][$i];
-      if($preco > 100){
-        $preco = $preco + ($preco * (10 / 100));
-      }
-      $produto[$nome] = $preco;
-      $produtos[$cod] = $produto;
+        $cod = $_POST['cod'][$i];
+        $nome = $_POST['nome'][$i];
+        $preco = $_POST['preco'][$i];
+        if($preco > 100){
+            $preco = $preco - ($preco * (10 / 100));
+        }
+        $produtos[$cod] = [
+            "nome" => $nome,
+            "preco" => $preco
+        ];
     }
-    foreach($produtos as $chave => $valor){
-      echo"<p></p>";
+    uasort($produtos, function($a, $b){
+        return strcmp($a['nome'], $b['nome']);
+    });
+    foreach($produtos as $cod => $produto){
+        echo "<p>$cod | {$produto['nome']} | R$ {$produto['preco']}</p>";
     }
-    foreach($produto as $chave => $valor){
-      echo"<p>Produto: $chave | Preço R$$valor ";
-    }
-  }
+}
 ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
