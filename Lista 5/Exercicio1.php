@@ -31,7 +31,7 @@
             if(isset($contatos[$nome])){
                 echo "<p>Nome duplicado! $nome não foi adicionado novamente.</p>";
             }
-            elseif(in_array($telefone, $contatos)){
+            if(in_array($telefone, $contatos)){
                 echo "<p>Telefone duplicado! $telefone do contato $nome não foi adicionado novamente.</p>";
             }
             else{
