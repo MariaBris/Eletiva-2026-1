@@ -15,12 +15,12 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
     :root {
-        --azul-vet: #4fa52c;
-        --roxo-vet: #5ec734;
+        --verde-principal: #4fa52c;
+        --verde-hover: #5ec734;
     }
 
     .navbar-custom {
-        background-color: var(--azul-vet);
+        background-color: var(--verde-principal);
         border-bottom: 4px solid var(--roxo-vet);
     }
 

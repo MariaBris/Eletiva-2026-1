@@ -8,8 +8,8 @@
   
   <style>
     :root {
-        --azul-vet: #4fa52c;
-        --roxo-vet: #5ec734;
+        --verde-principal: #4fa52c;
+        --verde-hover: #5ec734;
     }
 
     body {
@@ -20,20 +20,20 @@
     }
     
     .btn-login {
-        background-color: var(--azul-vet);
+        background-color: var(--verde-principal);
         color: white;
         border: none;
         font-weight: 500;
     }
     
     .btn-login:hover {
-        background-color: var(--roxo-vet);
+        background-color: var(--verde-hover);
         color: white;
     }
     
     .card-login {
-        border-top: 4px solid var(--roxo-vet);
-        border-bottom: 4px solid var(--roxo-vet);
+        border-top: 4px solid var(--verde-hover);
+        border-bottom: 4px solid var(--verde-hover);
         position: relative;
         z-index: 1;
         background-color: #ffffff;
@@ -52,13 +52,13 @@
     }
 
     .link-cadastro {
-        color: var(--azul-vet);
+        color: var(--verde-principal);
         text-decoration: none;
         font-weight: bold;
     }
 
     .link-cadastro:hover {
-        color: var(--roxo-vet);
+        color: var(--verde-hover);
     }
   </style>
 </head>
@@ -74,7 +74,7 @@
             <img src="logo.svg" alt="Logo Clínica" class="logo-clinica">
         </div>
         
-        <h5 class="text-center mb-4" style="color: var(--azul-vet);"><strong>Clínica Vet</strong></h5>
+        <h5 class="text-center mb-4" style="color: var(--verde-principal);"><strong>Clínica Vet</strong></h5>
 
         <form method="post">
           <div class="mb-3">
