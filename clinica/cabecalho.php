@@ -21,7 +21,7 @@
 
     .navbar-custom {
         background-color: var(--verde-principal);
-        border-bottom: 4px solid var(--roxo-vet);
+        border-bottom: 4px solid var(--verde-hover);
     }
 
     .navbar-brand, .nav-link {
@@ -36,12 +36,12 @@
     }
 
     .nav-link:hover {
-        background-color: var(--roxo-vet);
+        background-color: var(--verde-hover);
         color: white !important;
     }
 
     .dropdown-menu {
-        border-top: 3px solid var(--roxo-vet);
+        border-top: 3px solid var(--verde-hover);
     }
 
     .logo-nav {
