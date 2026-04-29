@@ -8,8 +8,8 @@
   
   <style>
     :root {
-        --azul-vet: #1e3a8a;
-        --roxo-vet: #6d28d9;
+        --azul-vet: #4fa52c;
+        --roxo-vet: #a4d92850;
     }
 
     body {
