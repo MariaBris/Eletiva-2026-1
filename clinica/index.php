@@ -9,7 +9,7 @@
   <style>
     :root {
         --azul-vet: #4fa52c;
-        --roxo-vet: #a4d92850;
+        --roxo-vet: #5ec734;
     }
 
     body {
