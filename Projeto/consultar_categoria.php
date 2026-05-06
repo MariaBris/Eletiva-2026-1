@@ -3,6 +3,8 @@
     require_once('conexao.php');
     try{
         $stmt = $pdo->prepare('SELECT * FROM categoria WHERE id=?');
+        $stmt->execute($_GET['id']);
+        $resultado = $stmt->fetch();
     }catch(Exception $e){
         echo "Erro!".$e->getMessage();
     }
