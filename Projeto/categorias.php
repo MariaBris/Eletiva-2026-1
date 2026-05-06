@@ -1,5 +1,12 @@
 <?php
     require_once('cabecalho.php');
+    require_once('conexao.php');
+        try{
+          $stmt = $pdo->query('SELECT * FROM categoria');
+          $resultado = $stmt->fetchAll();
+        } catch(Exception $e){
+          echo "Erro: ".$e->getMessage();
+        }
 ?>
 
 <h2>Categorias</h2>
@@ -13,51 +20,16 @@
         </tr>
     </thead>
     <tbody>
-        
+        <?php foreach ($resultado as $r): ?>
         <tr>
-            <td>1</td>
-            <td>Exemplo</td>
+            <td><?= $r['id']?></td> <!-- esse ?= é o mesmo que  echo "valor"-->
+            <td><?= $r['nome']?></td>
             <td class="d-flex gap-2">
-            <a href="alterar_categoria.php" class="btn btn-sm btn-warning">Editar</a>
-            <a href="consultar_categoria.php" class="btn btn-sm btn-info">Consultar</a>
+            <a href="alterar_categoria.php?id=<?= $r['id']?>" class="btn btn-sm btn-warning">Editar</a>
+            <a href="consultar_categoria.php?id=<?= $r['id']?>" class="btn btn-sm btn-info">Consultar</a>
             </td>
         </tr>
-        
-        <tr>
-            <td>2</td>
-            <td>Exemplo</td>
-            <td class="d-flex gap-2">
-            <a href="#" class="btn btn-sm btn-warning">Editar</a>
-            <a href="#" class="btn btn-sm btn-info">Consultar</a>
-            </td>
-        </tr>
-        
-        <tr>
-            <td>3</td>
-            <td>Exemplo</td>
-            <td class="d-flex gap-2">
-            <a href="#" class="btn btn-sm btn-warning">Editar</a>
-            <a href="#" class="btn btn-sm btn-info">Consultar</a>
-            </td>
-        </tr>
-        
-        <tr>
-            <td>4</td>
-            <td>Exemplo</td>
-            <td class="d-flex gap-2">
-            <a href="#" class="btn btn-sm btn-warning">Editar</a>
-            <a href="#" class="btn btn-sm btn-info">Consultar</a>
-            </td>
-        </tr>
-        
-        <tr>
-            <td>5</td>
-            <td>Exemplo</td>
-            <td class="d-flex gap-2">
-            <a href="#" class="btn btn-sm btn-warning">Editar</a>
-            <a href="#" class="btn btn-sm btn-info">Consultar</a>
-            </td>
-        </tr>
+        <?php endforeach; ?>
         
     </tbody>
     </table>
