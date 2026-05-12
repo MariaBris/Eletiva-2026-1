@@ -3,7 +3,7 @@
     require_once('conexao.php');
     try{
         $stmt = 
-            $pdo->prepare('SELECT * FROM categoria WHERE id=?');
+            $pdo->prepare('SELECT * FROM produto WHERE id=?');
         $stmt->execute([$_GET['id']]);
         $resultado = $stmt->fetch();
     } catch(Exception $e){
@@ -11,12 +11,22 @@
     }
 ?>
 
-<h1>Consultar Categoria</h1>
+<h1>Consultar Produto</h1>
     <form method="post" 
-        action="consultar_categoria.php?id=<?= $resultado['id'] ?>">
+        action="consultar_produto.php?id=<?= $resultado['id'] ?>">
         <div class="mb-3">
               <p><strong>Descrição:</strong> 
                  <?= $resultado['nome'] ?> 
+              </p>
+        </div>
+        <div class="mb-3">
+              <p><strong>Valor:</strong> 
+                 <?= $resultado['valor'] ?> 
+              </p>
+        </div>
+        <div class="mb-3">
+              <p><strong>Categoria:</strong> 
+                 
               </p>
         </div>
         <button type="submit" class="btn btn-danger">Excluir</button>
@@ -25,10 +35,10 @@
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $id = $_GET['id'];
             try{
-                $sql = "DELETE FROM categoria WHERE id = ?";
+                $sql = "DELETE FROM produto WHERE id = ?";
                 $stmt = $pdo->prepare($sql);
                 if($stmt->execute([$id])){
-                    header('Location: categorias.php');
+                    header('Location: produtos.php');
                 } else {
                     echo "Erro ao excluir!";
                 }

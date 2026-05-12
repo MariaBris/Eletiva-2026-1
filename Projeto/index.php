@@ -35,14 +35,12 @@
         try{
           $stmt = $pdo->prepare("SELECT * FROM usuario WHERE email = ?");
           $stmt->execute([$email]);
-          $usuario = $stmt->fetchAll();
-          if ($usuario){
-            $senha_correta = password_verify($senha, $usuario['senha']);
-            if($senha_correta){
-              $_SESSION['nome'] = $usuario['nome'];
-              $_SESSION['acesso'] = true; 
-              header('Location: principal.php');
-            }
+          $usuario = $stmt->fetch();
+          $senha_correta = password_verify($senha, $usuario['senha']);
+          if($usuario && $senha_correta){
+            $_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['acesso'] = true; 
+            header('Location: principal.php');
           } else {
             echo "<p class='text-danger'>Credenciais inválidas!</p>";
           }
