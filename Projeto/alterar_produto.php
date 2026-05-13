@@ -8,7 +8,7 @@
         $categoria = $_POST['categoria'];
         $id = $_GET['id'];
         try{
-          $sql = "UPDATE categoria SET descricao = ?, valor = ?, categoria_id = ? WHERE id = ?";
+          $sql = "UPDATE produto SET descricao = ?, valor = ?, categoria_id = ? WHERE id = ?";
           $stmt = $pdo->prepare($sql);
           if($stmt->execute([$descricao, $valor, $categoria, $id])){
             $mensagem = "<p>Alteração realizada!</p>";
@@ -26,6 +26,12 @@
     } catch (Exception $e){
         echo "Erro: ".$e->getMessage();
     }
+    try{
+        $stmt = $pdo->query('SELECT * FROM categoria');
+        $resultado2 = $stmt->fetchAll();
+    }catch(Exception $e){
+      die("Erro: ".$e->getMessage);
+    }
 ?>
 
 <h1>Alterar Produto</h1>
@@ -41,6 +47,16 @@
         </div>
         <div class="mb-3">
             <label for="valor" class="form-label">Selecione a categoria</label>
+            <select required name="categoria" id="categoria" class="form-select">
+              <?php foreach($resultado2 as $r): 
+                if($resultado['categoria_id'] == $r['id'])
+                  $selecionado = "selected";
+                else
+                  $selecionado = "";
+              ?>
+                <option <?= $selecionado?> value="<?= $r['id']?>"><?= $r['nome'] ?></option>
+              <?php endforeach; ?>
+            </select>
             
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>

@@ -1,5 +1,12 @@
 <?php
     require_once('cabecalho.php');
+    require_once('conexao.php');
+    try{
+        $stmt = $pdo->query("SELECT*FROM categoria");
+        $resultado = $stmt->fetchAll();
+    }catch(Exception $e){
+      die('Erro: '.$e->getMessage());
+    }
 ?>
 
 <h1>Novo Produto</h1>
@@ -10,10 +17,15 @@
         </div>
         <div class="mb-3">
               <label for="nome" class="form-label">Informe o valor</label>
-              <input type="text" id="descricao" name="descricao" class="form-control" required="">
+              <input type="text" id="valor" name="valor" class="form-control" required="">
         </div>
         <div class="mb-3">
-              <label for="nome" class="form-label">Selecione a categoria</label>
+              <label for="categoria" class="form-label">Selecione a categoria</label>
+              <select required name="categoria" id="categoria" class="form-select">
+                <?php foreach($resultado as $r):?>
+                <option value="<?= $r['id'] ?>"><?= $r['nome'] ?></option> 
+                <?php endforeach; ?>
+              </select>
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>

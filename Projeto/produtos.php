@@ -2,7 +2,8 @@
     require_once('cabecalho.php');
     require_once('conexao.php');
     try{
-        $stmt = $pdo->query('SELECT * FROM produto');
+        $stmt = $pdo->query('SELECT p.*,c.nome FROM produto p
+                             INNER JOIN categoria c ON c.id = p.categoria_id');
         $resultado = $stmt->fetchAll();
     } catch(Exception $e){
         echo "Erro: ".$e->getMessage();
@@ -25,7 +26,7 @@
         <tr>
             <td><?= $r['id'] ?></td>
             <td><?= $r['descricao'] ?></td>
-            <td><?= $r['categoria_id'] ?></td>
+            <td><?= $r['nome'] ?></td>
             <td class="d-flex gap-2">
             <a href="alterar_produto.php?id=<?= $r['id'] ?>" class="btn btn-sm btn-warning">Editar</a>
             <a href="consultar_produto.php?id=<?= $r['id'] ?>" class="btn btn-sm btn-info">Consultar</a>
