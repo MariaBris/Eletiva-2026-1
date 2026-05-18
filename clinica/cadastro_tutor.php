@@ -47,25 +47,14 @@
         </div>
 
         <div class="row g-3 mb-3">
-            <div class="col">
+            <div class="col-md-2">
                 <label for="telefone" class="form-label fw-bold">Telefone</label>
                 <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(18)99999-9999" required>
             </div>
             <div class="col">
-                <label for="CEP" class="form-label fw-bold">CEP</label>
-                <input type="text" class="form-control" id="CEP" name="cep" placeholder="ex.: 11220802">
+                <label for="endereco" class="form-label fw-bold">Endereço</label>
+                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="ex.: Rua Pernambuco, 999">
             </div>
-            <div class="col">
-                <label for="Logradouro" class="form-label fw-bold">Logradouro</label>
-                <input type="text" class="form-control" id="Logradouro" name="logradouro" placeholder="ex.: Rua Pernambuco">
-            </div>
-            <div class="col-md-1">
-                <label for="NCasa" class="form-label fw-bold">Nº</label>
-                <input type="text" class="form-control" id="NCasa" name="numero" placeholder="Nº">
-            </div>
-        </div>
-        
-        <div class="row g-3 mb-3">
             <div class="col">
                 <label for="Bairro" class="form-label fw-bold">Bairro</label>
                 <input type="text" class="form-control" id="Bairro" name="bairro" placeholder="Bairro">
