@@ -4,8 +4,13 @@
     try{
         $stmt = 
             $pdo->prepare('SELECT p.*, c.nome FROM produto p 
+<<<<<<< HEAD
                            INNER JOIN categoria c ON c.id = p.categoria_id 
                             WHERE p.id=?');
+=======
+                           INNER JOIN categoria c on c.id = p.categoria_id
+                           WHERE p.id=?');
+>>>>>>> 5940641fe35132479a297fe07e9f95d3009af4de
         $stmt->execute([$_GET['id']]);
         $resultado = $stmt->fetch();
     } catch(Exception $e){

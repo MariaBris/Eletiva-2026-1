@@ -2,10 +2,17 @@
     require_once('cabecalho.php');
     require_once('conexao.php');
     try{
+<<<<<<< HEAD
       $stmt = $pdo->query("SELECT * FROM categoria");
       $resultado = $stmt->fetchAll();
     } catch(Exception $e){
       die("Erro: ". $e->getMessage());
+=======
+        $stmt = $pdo->query("SELECT*FROM categoria");
+        $resultado = $stmt->fetchAll();
+    }catch(Exception $e){
+      die('Erro: '.$e->getMessage());
+>>>>>>> 5940641fe35132479a297fe07e9f95d3009af4de
     }
 ?>
 
@@ -22,8 +29,13 @@
         <div class="mb-3">
               <label for="categoria" class="form-label">Selecione a categoria</label>
               <select required name="categoria" id="categoria" class="form-select">
+<<<<<<< HEAD
                 <?php foreach($resultado as $r): ?>
                   <option value="<?= $r['id'] ?>"><?= $r['nome'] ?></option>
+=======
+                <?php foreach($resultado as $r):?>
+                <option value="<?= $r['id'] ?>"><?= $r['nome'] ?></option> 
+>>>>>>> 5940641fe35132479a297fe07e9f95d3009af4de
                 <?php endforeach; ?>
               </select>
         </div>

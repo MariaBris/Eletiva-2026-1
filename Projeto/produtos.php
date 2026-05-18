@@ -2,7 +2,11 @@
     require_once('cabecalho.php');
     require_once('conexao.php');
     try{
+<<<<<<< HEAD
         $stmt = $pdo->query('SELECT p.*, c.nome FROM produto p
+=======
+        $stmt = $pdo->query('SELECT p.*,c.nome FROM produto p
+>>>>>>> 5940641fe35132479a297fe07e9f95d3009af4de
                              INNER JOIN categoria c ON c.id = p.categoria_id');
         $resultado = $stmt->fetchAll();
     } catch(Exception $e){
