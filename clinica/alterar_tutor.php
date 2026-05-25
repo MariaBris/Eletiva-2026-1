@@ -10,7 +10,7 @@
         $cidade = $_POST['cidade'];
         $id = $_GET['id'];
         try {
-            $sql = "UPDATE tutor SET nome = ?, telefone = ?, endereco = ?, bairro = ?, cidade = ? WHERE idtutor = ?";
+            $sql = "UPDATE tutor SET nome = ?, telefone = ?, endereco = ?, bairro = ?, cidade = ? WHERE id = ?";
             $stmt = $pdo->prepare($sql);
             
             if($stmt->execute([$nome, $telefone, $endereco, $bairro, $cidade, $id])){
@@ -23,7 +23,7 @@
         }
     }
     try {
-        $stmt = $pdo->prepare("SELECT * FROM tutor WHERE idtutor = ?");
+        $stmt = $pdo->prepare("SELECT * FROM tutor WHERE id = ?");
         $stmt->execute([$_GET['id']]);
         $resultado = $stmt->fetch();
     } catch (Exception $e){
@@ -33,7 +33,7 @@
 
 <div class="container-md mt-4 conteudo-sistema">
     <h1>Alterar Informações do Tutor</h1>
-    <form method="post" action="alterar_tutor.php?id=<?= $resultado['idtutor'] ?>">
+    <form method="post" action="alterar_tutor.php?id=<?= $resultado['id'] ?>">
         <div class="row g-3 mb-3">
             <div class="col">
                 <label for="Nome" class="form-label fw-bold">Nome</label>
@@ -73,4 +73,3 @@
 
 <?php
     require_once('rodape.php');
-?>

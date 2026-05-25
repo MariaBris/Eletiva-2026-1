@@ -18,13 +18,13 @@ USE `mydb` ;
 -- Table `mydb`.`tutor`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`tutor` (
-  `idtutor` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(200) NOT NULL,
   `telefone` VARCHAR(11) NOT NULL,
   `endereco` VARCHAR(200) NOT NULL,
   `bairro` VARCHAR(200) NOT NULL,
   `cidade` VARCHAR(200) NOT NULL,
-  PRIMARY KEY (`idtutor`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -44,17 +44,21 @@ ENGINE = InnoDB;
 -- Table `mydb`.`pet`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`pet` (
-  `idpet` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(200) NOT NULL,
   `especie` VARCHAR(200) NOT NULL,
+  `raca` VARCHAR(200) NOT NULL,
   `cor` VARCHAR(45) NOT NULL,
+  `peso` DECIMAL(8,2) NOT NULL,
   `sexo` VARCHAR(1) NOT NULL,
-  `tutor_idtutor` INT NOT NULL,
-  PRIMARY KEY (`idpet`, `tutor_idtutor`),
-  INDEX `fk_pet_tutor_idx` (`tutor_idtutor` ASC),
+  `idade` INT NULL,
+  `id_tutor` INT NOT NULL,
+  `foto` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`, `id_tutor`),
+  INDEX `fk_pet_tutor_idx` (`id_tutor` ASC),
   CONSTRAINT `fk_pet_tutor`
-    FOREIGN KEY (`tutor_idtutor`)
-    REFERENCES `mydb`.`tutor` (`idtutor`)
+    FOREIGN KEY (`id_tutor`)
+    REFERENCES `mydb`.`tutor` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -90,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`consulta` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_consulta_pet1`
     FOREIGN KEY (`pet_idpet` , `pet_tutor_idtutor`)
-    REFERENCES `mydb`.`pet` (`idpet` , `tutor_idtutor`)
+    REFERENCES `mydb`.`pet` (`id` , `id_tutor`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
