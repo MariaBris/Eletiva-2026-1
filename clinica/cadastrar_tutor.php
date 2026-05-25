@@ -2,83 +2,60 @@
     require_once('cabecalho.php');
 ?>
 
-<style>
-    :root {
-        --verde-principal: #4fa52c;
-        --verde-hover: #5ec734;
-    }
-
-    .btn-salvar {
-        background-color: var(--verde-principal);
-        color: white;
-        border: none;
-        transition: 0.3s;
-    }
-    .btn-salvar:hover {
-        background-color: var(--verde-hover);
-        color: white;
-    }
-    
-    .form-label.fw-bold {
-        color: #333;
-    }
-</style>
-
-<div class="container-md mt-4">
+<div class="container-md mt-4 conteudo-sistema">
     <h1>Cadastro de Tutor</h1>
     <form method="post">
         <div class="row g-3 mb-3">
-            <div class="col-md-auto">
-                <label for="Codigo" class="form-label fw-bold">ID</label>
-                <span class="input-group-text bg-light text-muted">0000</span>
-            </div>
             <div class="col">
                 <label for="Nome" class="form-label fw-bold">Nome</label>
-                <input type="text" class="form-control" id="Nome" name="nome" placeholder="Nome Completo do Tutor" required>
+                <input type="text" class="form-control" id="Nome" name="nome" placeholder="Nome Completo do Tutor" required="">
             </div>
-            <div class="col">
-                <label for="Email" class="form-label fw-bold">E-mail</label>
-                <input type="email" class="form-control" id="Email" name="email" placeholder="tutor@gmail.com">
-            </div>
-            <div class="col-md-2">
-                <label for="CPF" class="form-label fw-bold">CPF</label>
-                <input type="text" class="form-control" id="CPF" name="cpf" placeholder="000.000.000-00">
+            <div class="col-md-4">
+                <label for="telefone" class="form-label fw-bold">Telefone</label>
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(18)99999-9999" required="">
             </div>
         </div>
 
         <div class="row g-3 mb-3">
-            <div class="col-md-2">
-                <label for="telefone" class="form-label fw-bold">Telefone</label>
-                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(18)99999-9999" required>
-            </div>
-            <div class="col">
+            <div class="col-md-6">
                 <label for="endereco" class="form-label fw-bold">Endereço</label>
-                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="ex.: Rua Pernambuco, 999">
+                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="ex.: Rua Pernambuco, 999" required="">
             </div>
-            <div class="col">
+            <div class="col-md-3">
                 <label for="Bairro" class="form-label fw-bold">Bairro</label>
-                <input type="text" class="form-control" id="Bairro" name="bairro" placeholder="Bairro">
+                <input type="text" class="form-control" id="Bairro" name="bairro" placeholder="Bairro" required="">
             </div>
-            <div class="col">
+            <div class="col-md-3">
                 <label for="Cidade" class="form-label fw-bold">Cidade</label>
-                <input type="text" class="form-control" id="Cidade" name="cidade" placeholder="Cidade">
-            </div>
-            <div class="col-md-1">
-                <label for="Estado" class="form-label fw-bold">UF</label>
-                <select class="form-select" id="Estado" name="uf">
-                    <option selected>SP</option>
-                    <option>PR</option>
-                    <option>MG</option>
-                    <option>RJ</option>
-                </select>
+                <input type="text" class="form-control" id="Cidade" name="cidade" placeholder="Cidade" required="">
             </div>
         </div>
 
         <div class="text-end mt-4">
-            <button type="submit" class="btn btn-salvar">Enviar</button>
+            <button type="submit" class="btn btn-salvar">Cadastrar Tutor</button>
             <a href="tutores.php" class="btn btn-danger">Cancelar</a>
         </div>
     </form>
+    <?php 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            require_once('conexao.php');
+            $nome = $_POST['nome'];
+            $telefone = $_POST['telefone'];
+            $endereco = $_POST['endereco'];
+            $bairro = $_POST['bairro'];
+            $cidade = $_POST['cidade'];
+            try{
+                $stmt = $pdo->prepare('INSERT INTO tutor (nome, telefone, endereco, bairro, cidade) VALUES (?, ?, ?, ?, ?);');
+                if($stmt->execute([$nome, $telefone, $endereco, $bairro, $cidade])){
+                    echo "<p>Cadastro realizado!</p>";
+                } else {
+                    echo "<p>Erro ao cadastrar! Tente novamente</p>";
+                }
+            }catch(Exception $e){
+          echo "Erro: ".$e->getMessage();
+        }
+        }
+    ?>
 </div>
 
 <?php
