@@ -2,51 +2,9 @@
     require_once('cabecalho.php');
 ?>
 
-<style>
-    :root {
-        --verde-principal: #4fa52c;
-        --verde-hover: #5ec734;
-        --roxo-escuro: #6d28d9;
-        --roxo-claro: #8b5cf6;
-        --azul-consulta: #2c7da5;
-        --azul-hover: #349dc7;
-    }
 
-    .btn-novo {
-        background-color: var(--verde-principal);
-        color: white;
-        border: none;
-        transition: 0.3s;
-    }
-    .btn-novo:hover {
-        background-color: var(--verde-hover);
-        color: white;
-    }
 
-    .btn-editar-roxo {
-        background-color: var(--roxo-escuro);
-        color: white;
-        border: none;
-        transition: 0.3s;
-    }
-    .btn-editar-roxo:hover {
-        background-color: var(--roxo-claro);
-        color: white;
-    }
-
-    .btn-consultar-azul {
-        background-color: var(--azul-consulta);
-        color: white;
-        border: none;
-        transition: 0.3s;
-    }
-    .btn-consultar-azul:hover {
-        background-color: var(--azul-hover);
-        color: white;
-    }
-</style>
-
-<div class="container-fluid py-3">
+<div class="container-fluid py-3 conteudo-sistema">
     <h2>Pets</h2>
     <a href="cadastrar_pet.php" class="btn btn-success mb-3 btn-novo">Novo Registro</a>
     

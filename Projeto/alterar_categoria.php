@@ -18,8 +18,7 @@
         }
       }
     try{
-        $stmt = 
-            $pdo->prepare("SELECT * from categoria WHERE id = ?");
+        $stmt = $pdo->prepare("SELECT * from categoria WHERE id = ?");
         $stmt->execute([$_GET['id']]);
         $resultado = $stmt->fetch();
     } catch (Exception $e){

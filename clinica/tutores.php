@@ -48,7 +48,7 @@
 
 <div class="container-fluid py-3">
     <h2>Tutores</h2>
-    <a href="cadastro_tutor.php" class="btn btn-success mb-3 btn-novo">Novo Registro</a>
+    <a href="cadastrar_tutor.php" class="btn btn-success mb-3 btn-novo">Novo Registro</a>
 
     <div class="table-responsive">
         <table class="table table-hover table-striped">

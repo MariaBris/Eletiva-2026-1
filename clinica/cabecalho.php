@@ -13,43 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sistema</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
-    :root {
-        --verde-principal: #4fa52c;
-        --verde-hover: #5ec734;
-    }
-
-    .navbar-custom {
-        background-color: var(--verde-principal);
-        border-bottom: 4px solid var(--verde-hover);
-    }
-
-    .navbar-brand, .nav-link {
-        color: white !important;
-    }
-
-    .nav-link {
-        border-radius: 5px;
-        padding: 8px 12px !important;
-        margin: 0 2px;
-        transition: all 0.3s;
-    }
-
-    .nav-link:hover {
-        background-color: var(--verde-hover);
-        color: white !important;
-    }
-
-    .dropdown-menu {
-        border-top: 3px solid var(--verde-hover);
-    }
-
-    .logo-nav {
-        width: 40px;
-        height: auto;
-        filter: brightness(0) invert(1);
-    }
-</style>
+<link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow">

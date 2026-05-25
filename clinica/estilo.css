@@ -1,0 +1,104 @@
+:root {
+    --verde-principal: #4fa52c;
+    --verde-hover: #5ec734;
+    --roxo-escuro: #6d28d9;
+    --roxo-claro: #8b5cf6;
+    --azul-consulta: #2c7da5;
+    --azul-hover: #349dc7;
+}
+
+/* Fundo para as páginas internas do sistema com as patinhas locais */
+body {
+    background-color: #f8f9fa;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('fundo.png');
+    background-size: cover;       /* Faz a imagem cobrir a tela toda sem repetir */
+    background-attachment: fixed; /* Mantém o fundo fixo ao rolar a página */
+    background-position: center;  /* Centraliza a imagem na tela */
+}
+
+/* ==========================================================================
+   ESTILOS DA NAVBAR (MANTIDOS EXATAMENTE COMO VOCÊ TINHA)
+   ========================================================================= */
+.navbar-custom {
+    background-color: var(--verde-principal);
+    border-bottom: 4px solid var(--verde-hover);
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.nav-link {
+    border-radius: 5px;
+    padding: 8px 12px !important;
+    margin: 0 2px;
+    transition: all 0.3s;
+}
+
+.nav-link:hover {
+    background-color: var(--verde-hover);
+    color: white !important;
+}
+
+.dropdown-menu {
+    border-top: 3px solid var(--verde-hover);
+}
+
+.logo-nav {
+    width: 40px;
+    height: auto;
+    filter: brightness(0) invert(1);
+}
+
+/* ==========================================================================
+   CAMADA PROTETORA BRANCA (APENAS PARA CONTEÚDO, NÃO AFETA A NAVBAR)
+   ========================================================================== */
+/* Criamos uma classe específica para aplicar o fundo branco nos seus blocos */
+.conteudo-sistema {
+    background-color: rgba(255, 255, 255, 0.96) !important;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   BOTÕES E COMPONENTES GLOBAIS DO SISTEMA
+   ========================================================================== */
+.btn-novo, .btn-salvar {
+    background-color: var(--verde-principal);
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+.btn-novo:hover, .btn-salvar:hover {
+    background-color: var(--verde-hover);
+    color: white;
+}
+
+.btn-editar-roxo {
+    background-color: var(--roxo-escuro);
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+.btn-editar-roxo:hover {
+    background-color: var(--roxo-claro);
+    color: white;
+}
+
+.btn-consultar-azul {
+    background-color: var(--azul-consulta);
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+.btn-consultar-azul:hover {
+    background-color: var(--azul-hover);
+    color: white;
+}
+
+.form-label.fw-bold {
+    color: #333;
+}
