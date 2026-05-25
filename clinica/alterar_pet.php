@@ -1,103 +1,104 @@
 <?php
     require_once('cabecalho.php');
+    require_once('conexao.php');
+    $mensagem = "";
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $nome = $_POST['nome'];
+        $especie = $_POST['especie'];
+        $cor = $_POST['cor'];
+        $sexo = $_POST['sexo'];
+        $tutor_idtutor = $_POST['tutor_idtutor'];
+        $id = $_GET['id'];
+        try{
+            $sql = "UPDATE pet SET nome = ?, especie = ?, cor = ?, sexo = ?, tutor_idtutor = ? WHERE idpet = ?";
+            $stmt = $pdo->prepare($sql);
+            if($stmt->execute([$nome, $especie, $cor, $sexo, $id, $tutor_idtutor])){
+                $mensagem = "<p>Alteração realizada!</p>";
+            } else {
+                $mensagem = "<p>Erro ao alterar! Tente novamente</p>";
+            }
+        }catch(Exception $e){
+          echo "Erro: ".$e->getMessage();
+        }
+    }
+    try{
+        $stmt = $pdo->prepare("SELECT * FROM pet WHERE idpet = ?");
+        $stmt->execute([$_GET['id']]);
+        $resultado = $stmt->fetch();
+    } catch (Exception $e){
+        echo "Erro: ".$e->getMessage();
+    }
+    try{
+        $stmt_tutores = $pdo->prepare("SELECT idtutor, nome FROM tutor ORDER BY nome");
+        $stmt_tutores->execute();
+        $tutores = $stmt_tutores->fetchAll();
+    }catch(Exception $e){
+        echo "Erro: ".$e->getMessage();
+    }
 ?>
 
-<style>
-    :root {
-        --verde-principal: #4fa52c;
-        --verde-hover: #5ec734;
-    }
-
-    .btn-salvar {
-        background-color: var(--verde-principal);
-        color: white;
-        border: none;
-        transition: 0.3s;
-    }
-    .btn-salvar:hover {
-        background-color: var(--verde-hover);
-        color: white;
-    }
-    
-    .form-label.fw-bold {
-        color: #333;
-    }
-</style>
-
-<div class="container-md mt-4">
+<div class="container-md mt-4 conteudo-sistema">
     <h1>Alterar informações do Pet</h1>
-    <form method="post">
+    <form method="post" action="alterar_pet.php?id=<?= $resultado['idpet'] ?>">
         <div class="row g-3 mb-3">
-            <div class="col-md-auto">
-                <label for="Codigo" class="form-label fw-bold">ID</label>
-                <span class="input-group-text bg-light text-muted">0000</span>
-            </div>
             <div class="col">
                 <label for="Nome" class="form-label fw-bold">Nome</label>
-                <input type="text" class="form-control" id="Nome" name="nome" placeholder="Nome do pet" required>
+                <input value="<?= $resultado['nome']?>" type="text" class="form-control" id="Nome" name="nome" required="">
             </div>
             <div class="col">
                 <label for="especie" class="form-label fw-bold">Espécie</label>
                 <select class="form-select" id="especie" name="especie">
-                    <option selected>Gato</option>
-                    <option>Cão</option>
-                    <option>Coelho</option>
-                    <option>Hamsters</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <label for="raca" class="form-label fw-bold">Raça</label>
-                <select class="form-select" id="raca" name="raca">
-                    <option selected>SRD(SEM RAÇA DEFINIDA)</option>
-                    <option>Siamês</option>
-                    <option>Persa</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <label for="pelagem" class="form-label fw-bold">Pelagem</label>
-                <select class="form-select" id="pelagem" name="pelagem">
-                    <option selected>Curta</option>
-                    <option>Média</option>
-                    <option>Longa</option>
+                    <option value="Gato" <?= $resultado['especie'] == 'Gato' ? 'selected' : ''?>>Gato</option>
+                    <option value="Cão" <?= $resultado['especie'] == 'Cão' ? 'selected' : ''?> >Cão</option>
+                    <option value="Coelho" <?= $resultado['especie'] == 'Coelho' ? 'selected' : ''?> >Coelho</option>
+                    <option value="Hamsters" <?= $resultado['especie'] == 'Hamsters' ? 'selected' : ''?> >Hamsters</option>
                 </select>
             </div>
             <div class="col">
                 <label for="cor" class="form-label fw-bold">Cor</label>
-                <input type="text" class="form-control" id="cor" name="cor" placeholder="Preta" required>
+                <input value="<?= $resultado['cor'] ?>" type="text" class="form-control" id="cor" name="cor" placeholder="Preta" required="">
             </div>
         </div>
 
-        <div class="row g-3 mb-3">
-            <div class="col">
-                <label for="peso" class="form-label">Peso</label>
-                <input type="number" id="peso" name="peso" class="form-control" placeholder="9kg/900g">
+        <div class="row inline-row mb-3">
+            <label class="form-label fw-bold d-block">Sexo</label>
+            <div class="col-md-2">
+              <div class="form-check form-check-inline">
+                <input type="radio" id="femea" name="sexo" value="F" class="form-check-input" <?= $resultado['sexo'] == 'F' ? 'checked' : '' ?> required="">
+                <label for="femea" class="form-check-label">Fêmea</label>
+              </div>
             </div>
-            <div class="col">
-                <label for="sexo" class="form-label fw-bold">Sexo</label>
-                <select class="form-select" id="sexo" name="sexo">
-                    <option selected>Macho</option>
-                    <option>Fêmea</option>
-                </select>
+            <div class="col-md-2">
+              <div class="form-check form-check-inline">
+                <input type="radio" id="macho" name="sexo" value="M" class="form-check-input" <?= $resultado['sexo'] == 'M' ? 'checked' : '' ?> required="">
+                <label for="macho" class="form-check-label">Macho</label>
+              </div>
             </div>
+        </div>
+
+        <div class="row mb-3">
             <div class="col">
-              <label for="idade" class="form-label">Idade</label>
-              <input type="text" id="idade" name="idade" class="form-control">
-            </div>
-            <div class="col">
-              <label for="chip" class="form-label">Chip</label>
-              <input type="text" id="chip" name="chip" class="form-control">
-            </div>
-            <div class="col">
-              <label for="tutor" class="form-label">Tutor</label>
-              <input type="text" id="tutor" name="tutor" class="form-control">
+              <label for="tutor_idtutor" class="form-label fw-bold">Tutor Responsável</label>
+              <select class="form-select" id="tutor_idtutor" name="tutor_idtutor" required="">
+                  <option value="">Selecione um tutor...</option>
+                  <?php foreach($tutores as $t): ?>
+                      <option value="<?= $t['idtutor'] ?>" <?= $t['idtutor'] == $resultado['tutor_idtutor'] ? 'selected' : '' ?>>
+                          <?= $t['nome'] ?>
+                      </option>
+                  <?php endforeach; ?>
+              </select>
             </div>
         </div>
 
         <div class="text-end mt-4">
-            <button type="submit" class="btn btn-salvar">Enviar</button>
+            <button type="submit" class="btn btn-salvar">Salvar Alterações</button>
             <a href="pets.php" class="btn btn-danger">Cancelar</a>
         </div>
     </form>
+    
+    <div class="mt-3">
+        <?= $mensagem ?>
+    </div>
 </div>
 
 <?php
