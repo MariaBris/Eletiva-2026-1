@@ -40,17 +40,17 @@
     <form method="post">
       <div class="mb-3">
         <label class="form-label fw-bold">Nome</label>
-        <input type="text" name="nome" class="form-control" placeholder="Digite seu nome" required>
+        <input type="text" name="nome" class="form-control" placeholder="Digite o nome" required="">
       </div>
 
       <div class="mb-3">
         <label class="form-label fw-bold">Email</label>
-        <input type="email" name="email" class="form-control" placeholder="Digite seu email" required>
+        <input type="email" name="email" class="form-control" placeholder="Digite o email" required="">
       </div>
 
       <div class="mb-3">
         <label class="form-label fw-bold">Senha</label>
-        <input type="password" name="senha" class="form-control" placeholder="Digite sua senha" required>
+        <input type="password" name="senha" class="form-control" placeholder="Digite a senha" required="">
       </div>
 
       <button type="submit" class="btn btn-cadastrar w-100">Cadastrar</button>
@@ -66,12 +66,12 @@
           $stmt = $pdo->prepare('INSERT INTO usuario (nome, email, senha)
                                  VALUES (? , ?, ?);');
           if($stmt->execute([$nome, $email, $senha])){
-            echo "<div class='alert alert-success mt-3 text-center' role='alert'>Cadastro realizado! Faça o login!</div>";
+            echo "<p>Cadastro realizado! Faça o login!</p>";
           } else {
-            echo "<div class='alert alert-danger mt-3 text-center' role='alert'>Erro ao cadastrar! Tente novamente</div>";
+            echo "<p>Erro ao cadastrar! Tente novamente</p>";
           }
         } catch(Exception $e){
-          echo "<div class='alert alert-danger mt-3 text-center' role='alert'>Erro: ".$e->getMessage()."</div>";
+          echo "Erro: ".$e->getMessage();
         }
       }
     ?>
