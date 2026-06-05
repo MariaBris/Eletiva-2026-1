@@ -1,109 +1,101 @@
 <?php
     require_once('cabecalho.php');
+    require_once('conexao.php');
+    try{
+        $stmt = $pdo->prepare('SELECT p.*, t.nome AS nome_tutor FROM pet p 
+                               INNER JOIN tutor t on t.id = p.id_tutor WHERE p.id = ?');
+        $stmt->execute([$_GET['id']]);
+        $resultado = $stmt->fetch();
+    }catch(Exception $e){
+        echo "Erro!".$e->getMessage();
+    }
 ?>
 
-<style>
-    :root {
-        --verde-principal: #4fa52c;
-        --verde-hover: #5ec734;
-    }
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    .btn-salvar {
-        background-color: var(--verde-principal);
-        color: white;
-        border: none;
-        transition: 0.3s;
-    }
-    .btn-salvar:hover {
-        background-color: var(--verde-hover);
-        color: white;
-    }
+<div class="container-md mt-4 conteudo-sistema">
+    <h1 class="col text-center">Consultar Pet</h1>
     
-    .form-label.fw-bold {
-        color: #333;
-    }
-</style>
+    <form method="post" id="formExcluir" action="consultar_pet.php?id=<?= $resultado['id'] ?>">
+        <h3 class="col text-center mb-4"><?= $resultado['nome'] ?></h3>
 
-<div class="container-md mt-4">
-    <h1>Cadastro de Pet</h1>
-    <form method="post">
         <div class="row g-3 mb-3">
-            <div class="col-md-auto">
-                <label for="Codigo" class="form-label fw-bold">ID</label>
-                <span class="input-group-text bg-light text-muted">0000</span>
+            <div class="col-md-4">
+                <p><strong>Espécie:</strong> <?= $resultado['especie'] ?></p>
             </div>
-            <div class="col">
-                <label for="Nome" class="form-label fw-bold">Nome</label>
-                <input type="text" class="form-control" id="Nome" name="nome" placeholder="Nome do pet" required>
+            <div class="col-md-4">
+                <p><strong>Raça:</strong> <?= $resultado['raca'] ?></p>
             </div>
-            <div class="col">
-                <label for="especie" class="form-label fw-bold">Espécie</label>
-                <select class="form-select" id="especie" name="especie">
-                    <option selected>Gato</option>
-                    <option>Cão</option>
-                    <option>Coelho</option>
-                    <option>Hamsters</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <label for="raca" class="form-label fw-bold">Raça</label>
-                <select class="form-select" id="raca" name="raca">
-                    <option selected>SRD(SEM RAÇA DEFINIDA)</option>
-                    <option>Siamês</option>
-                    <option>Persa</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <label for="pelagem" class="form-label fw-bold">Pelagem</label>
-                <select class="form-select" id="pelagem" name="pelagem">
-                    <option selected>Curta</option>
-                    <option>Média</option>
-                    <option>Longa</option>
-                </select>
-            </div>
-            <div class="col">
-                <label for="cor" class="form-label fw-bold">Cor</label>
-                <input type="text" class="form-control" id="cor" name="cor" placeholder="Preta" required>
+            <div class="col-md-4">
+                <p><strong>Cor:</strong> <?= $resultado['cor'] ?></p>
             </div>
         </div>
 
         <div class="row g-3 mb-3">
-            <div class="col">
-                <label for="peso" class="form-label">Peso</label>
-                <input type="number" id="peso" name="peso" class="form-control" placeholder="9kg/900g">
+            <div class="col-md-3">
+                <p><strong>Sexo:</strong> <?= $resultado['sexo'] == 'M' ? 'Macho' : 'Fêmea' ?></p>
             </div>
-            <div class="col">
-                <label for="sexo" class="form-label fw-bold">Sexo</label>
-                <select class="form-select" id="sexo" name="sexo">
-                    <option selected>Macho</option>
-                    <option>Fêmea</option>
-                </select>
+            <div class="col-md-3">
+                <p><strong>Castrado:</strong> <?= $resultado['castrado'] == 1 ? 'Sim' : 'Não' ?></p>
             </div>
-            <div class="col">
-              <label for="idade" class="form-label">Idade</label>
-              <input type="text" id="idade" name="idade" class="form-control">
+            <div class="col-md-3">
+                <p><strong>Peso:</strong> <?= number_format($resultado['peso'], 2, ',', '.') ?> kg</p>
             </div>
-            <div class="col">
-              <label for="chip" class="form-label">Chip</label>
-              <input type="text" id="chip" name="chip" class="form-control">
+            <div class="col-md-3">
+                <p><strong>Idade:</strong> <?= $resultado['idade'] ?> <?= $resultado['idade'] == 1 ? 'ano' : 'anos' ?></p>
             </div>
-            <div class="col">
-              <label for="tutor" class="form-label">Tutor</label>
-              <input type="text" id="tutor" name="tutor" class="form-control">
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-12">
+                <p><strong>Tutor Responsável:</strong> <?= $resultado['nome_tutor'] ?></p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col mt-4">
-            <a href="tutores.php" class="btn btn-salvar">Voltar</a>
-            </div>
-            <div class="col text-end mt-4">
-                <button type="submit" class="btn btn-danger">Excluir</button>
+            <div class="col text-end">
+                <a href="pets.php" class="btn btn-salvar">Voltar</a>
+                <button type="button" onclick="confirmarExclusao()" class="btn btn-danger">Excluir</button>
             </div>
         </div>
     </form>
+
+    <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $id = $_GET['id'];
+            try{
+                $sql = "DELETE FROM pet WHERE id = ?";
+                $stmt = $pdo->prepare($sql);
+                if($stmt->execute([$id])){
+                    header('Location: pets.php');
+                }else{
+                    echo "Erro ao excluir!";
+                }
+            } catch(Exception $e){
+                echo "Erro: ".$e->getMessage();
+            }
+        }
+    ?>
 </div>
+
+<script>
+    function confirmarExclusao(){
+        Swal.fire({
+            title: "Deseja excluir?",
+            text: "Esta ação nao pode ser desfeita!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Sim, excluir!",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('formExcluir').submit();
+            }
+        });
+    }
+</script>
 
 <?php
     require_once('rodape.php');
-?>

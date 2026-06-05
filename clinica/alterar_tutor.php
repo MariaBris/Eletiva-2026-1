@@ -4,25 +4,25 @@
     $mensagem = "";
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $nome = $_POST['nome'];
+        $cpf = $_POST['cpf'];
         $telefone = $_POST['telefone'];
         $endereco = $_POST['endereco'];
         $bairro = $_POST['bairro'];
         $cidade = $_POST['cidade'];
         $id = $_GET['id'];
-        try {
-            $sql = "UPDATE tutor SET nome = ?, telefone = ?, endereco = ?, bairro = ?, cidade = ? WHERE id = ?";
+        try{
+            $sql = "UPDATE tutor SET nome = ?, cpf = ?, telefone = ?, endereco = ?, bairro = ?, cidade = ? WHERE id = ?";
             $stmt = $pdo->prepare($sql);
-            
-            if($stmt->execute([$nome, $telefone, $endereco, $bairro, $cidade, $id])){
+            if($stmt->execute([$nome, $cpf, $telefone, $endereco, $bairro, $cidade, $id])){
                 $mensagem = "<p>Alteração realizada!</p>";
             } else {
-                $mensagem = "<p>Erro ao alterar! Tente novamente</p>";
+                $mensagem = "<p>Erro ao alterar! Tente novamente.</p>";
             }
         } catch (Exception $e){
             echo "Erro: " . $e->getMessage();
         }
     }
-    try {
+    try{
         $stmt = $pdo->prepare("SELECT * FROM tutor WHERE id = ?");
         $stmt->execute([$_GET['id']]);
         $resultado = $stmt->fetch();
@@ -35,11 +35,15 @@
     <h1>Alterar Informações do Tutor</h1>
     <form method="post" action="alterar_tutor.php?id=<?= $resultado['id'] ?>">
         <div class="row g-3 mb-3">
-            <div class="col">
+            <div class="col-md-6">
                 <label for="Nome" class="form-label fw-bold">Nome</label>
                 <input value="<?= $resultado['nome'] ?>" type="text" class="form-control" id="Nome" name="nome" required="">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
+                <label for="CPF" class="form-label fw-bold">CPF</label>
+                <input value="<?= $resultado['cpf'] ?>" type="text" class="form-control" id="CPF" name="cpf" required="">
+            </div>
+            <div class="col-md-3">
                 <label for="telefone" class="form-label fw-bold">Telefone</label>
                 <input value="<?= $resultado['telefone'] ?>" type="text" class="form-control" id="telefone" name="telefone" required="">
             </div>
@@ -65,10 +69,9 @@
             <a href="tutores.php" class="btn btn-danger">Cancelar</a>
         </div>
     </form>
-
-    <div class="mt-3">
-        <?= $mensagem ?>
-    </div>
+    <?php
+      echo $mensagem;
+    ?>
 </div>
 
 <?php

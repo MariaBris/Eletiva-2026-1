@@ -6,28 +6,32 @@
     <h1>Cadastro de Tutor</h1>
     <form method="post">
         <div class="row g-3 mb-3">
-            <div class="col">
+            <div class="col-md-6">
                 <label for="Nome" class="form-label fw-bold">Nome</label>
                 <input type="text" class="form-control" id="Nome" name="nome" placeholder="Nome Completo do Tutor" required="">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
+                <label for="CPF" class="form-label fw-bold">CPF</label>
+                <input type="text" class="form-control" id="CPF" name="cpf" placeholder="Somente números" required="">
+            </div>
+            <div class="col-md-3">
                 <label for="telefone" class="form-label fw-bold">Telefone</label>
-                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(18)99999-9999" required="">
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Somente números" required="">
             </div>
         </div>
 
         <div class="row g-3 mb-3">
             <div class="col-md-6">
                 <label for="endereco" class="form-label fw-bold">Endereço</label>
-                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="ex.: Rua Pernambuco, 999" required="">
+                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua Pernambuco, 999" required="">
             </div>
             <div class="col-md-3">
                 <label for="Bairro" class="form-label fw-bold">Bairro</label>
-                <input type="text" class="form-control" id="Bairro" name="bairro" placeholder="Bairro" required="">
+                <input type="text" class="form-control" id="Bairro" name="bairro" placeholder="Centro" required="">
             </div>
             <div class="col-md-3">
                 <label for="Cidade" class="form-label fw-bold">Cidade</label>
-                <input type="text" class="form-control" id="Cidade" name="cidade" placeholder="Cidade" required="">
+                <input type="text" class="form-control" id="Cidade" name="cidade" placeholder="Presidente" required="">
             </div>
         </div>
 
@@ -39,25 +43,25 @@
     <?php 
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             require_once('conexao.php');
-            $nome = $_POST['nome'];
+            $nome = strtoupper($_POST['nome']);
+            $cpf = $_POST['cpf'];
             $telefone = $_POST['telefone'];
-            $endereco = $_POST['endereco'];
-            $bairro = $_POST['bairro'];
-            $cidade = $_POST['cidade'];
+            $endereco = strtoupper($_POST['endereco']);
+            $bairro = strtoupper($_POST['bairro']);
+            $cidade = strtoupper($_POST['cidade']);
             try{
-                $stmt = $pdo->prepare('INSERT INTO tutor (nome, telefone, endereco, bairro, cidade) VALUES (?, ?, ?, ?, ?);');
-                if($stmt->execute([$nome, $telefone, $endereco, $bairro, $cidade])){
+                $stmt = $pdo->prepare('INSERT INTO tutor (nome, cpf, telefone, endereco, bairro, cidade) VALUES (?, ?, ?, ?, ?, ?);');
+                if($stmt->execute([$nome, $cpf, $telefone, $endereco, $bairro, $cidade])){
                     echo "<p>Cadastro realizado!</p>";
                 } else {
-                    echo "<p>Erro ao cadastrar! Tente novamente</p>";
+                    echo "<p>Erro ao cadastrar! Tente novamente.</p>";
                 }
             }catch(Exception $e){
-          echo "Erro: ".$e->getMessage();
-        }
+                echo "Erro: ".$e->getMessage();
+            }
         }
     ?>
 </div>
 
 <?php
     require_once('rodape.php');
-?>

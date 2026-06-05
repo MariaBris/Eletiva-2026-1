@@ -20,6 +20,7 @@ USE `mydb` ;
 CREATE TABLE IF NOT EXISTS `mydb`.`tutor` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(200) NOT NULL,
+  `cpf` VARCHAR(45) NOT NULL,
   `telefone` VARCHAR(11) NOT NULL,
   `endereco` VARCHAR(200) NOT NULL,
   `bairro` VARCHAR(200) NOT NULL,
@@ -49,11 +50,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`pet` (
   `especie` VARCHAR(200) NOT NULL,
   `raca` VARCHAR(200) NOT NULL,
   `cor` VARCHAR(45) NOT NULL,
+  `castrado` TINYINT NOT NULL,
   `peso` DECIMAL(8,2) NOT NULL,
   `sexo` VARCHAR(1) NOT NULL,
-  `idade` INT NULL,
+  `idade` INT NOT NULL,
   `id_tutor` INT NOT NULL,
-  `foto` VARCHAR(45) NULL,
   PRIMARY KEY (`id`, `id_tutor`),
   INDEX `fk_pet_tutor_idx` (`id_tutor` ASC),
   CONSTRAINT `fk_pet_tutor`
