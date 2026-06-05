@@ -12,31 +12,32 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<div class="container-md mt-4">
-    <h1 class="col text-center">Consultar Tutor</h1>
+<div class="container-md mt-4 conteudo-sistema">
+    <h1 class="text-center text-muted mb-4">Consultar Tutor</h1>
+    
     <form method="post" id="formExcluir" action="consultar_tutor.php?id=<?= $resultado['id'] ?>">
         <h3 class="col text-center mb-4"><?= $resultado['nome'] ?></h3>
         <div class="row g-3 mb-3">
-            <div class="col-md-6">
-                <p><strong>Nome:</strong><?= $resultado['nome'] ?></p>
+            <div class="col-md-5">
+                <p><strong>Nome: </strong><?= $resultado['nome'] ?></p>
+            </div>
+            <div class="col-md-4">
+                <p><strong>CPF: </strong><?= $resultado['cpf'] ?></p>
             </div>
             <div class="col-md-3">
-                <p><strong>CPD:</strong><?= $resultado['cpf'] ?></p>
-            </div>
-            <div class="col-mds-3">
-                <p><strong>Telefone:</strong><?= $resultado['telefone'] ?></p>
+                <p><strong>Telefone: </strong><?= $resultado['telefone'] ?></p>
             </div>
         </div>
 
         <div class="row g-3 mb-4">
-            <div class="col-md-6">
-                <p><strong>Endereço:</strong><?= $resultado['endereco'] ?></p>
+            <div class="col-md-5">
+                <p><strong>Endereço: </strong><?= $resultado['endereco'] ?></p>
+            </div>
+            <div class="col-md-4">
+                <p><strong>Bairro: </strong><?= $resultado['bairro'] ?></p>
             </div>
             <div class="col-md-3">
-                <p><strong>Bairro:</strong><?= $resultado['bairro'] ?></p>
-            </div>
-            <div class="col-md-3">
-                <p><strong>Cidade:</strong><?= $resultado['cidade'] ?></p>
+                <p><strong>Cidade: </strong><?= $resultado['cidade'] ?></p>
             </div>
         </div>
         <div class="row">
@@ -52,7 +53,7 @@
             try{
                 $sql = "DELETE FROM tutor WHERE id = ?";
                 $stmt = $pdo->prepare($sql);
-                if($stmt->execute(['id'])){
+                if($stmt->execute([$id])){
                     header('Location: tutores.php');
                 } else{
                     echo "Erro ao excluir!";

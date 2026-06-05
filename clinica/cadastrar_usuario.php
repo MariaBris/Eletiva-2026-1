@@ -61,6 +61,12 @@
     .text-link:hover {
         color: var(--verde-hover);
     }
+    
+    .link-cadastro {
+        color: var(--verde-principal);
+        text-decoration: none;
+        font-weight: bold;
+    }
     </style>
 </head>
 
@@ -76,7 +82,7 @@
                 <img src="logo.svg" alt="Logo Clínica" class="logo-clinica">
                 <h4 class="mb-0" style="color: var(--verde-principal); font-weight: 700;">Clínica Vet</h4>
             </div>
-            
+
             <h6 class="text-center text-muted mb-4">Cadastro de Usuário</h6>
 
             <form method="post">
@@ -118,7 +124,7 @@
         ?>
 
             <p class="text-center mt-4 mb-0 small">
-                Já tem conta? <a href="index.php">Faça login</a>
+                Já tem conta? <a href="index.php" class="link-cadastro">Faça login</a>
             </p>
         </div>
     </div>

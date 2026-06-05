@@ -14,7 +14,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="container-md mt-4 conteudo-sistema">
-    <h1 class="col text-center">Consultar Pet</h1>
+    <h1 class="text-center text-muted mb-4">Consultar Pet</h1>
     
     <form method="post" id="formExcluir" action="consultar_pet.php?id=<?= $resultado['id'] ?>">
         <h3 class="col text-center mb-4"><?= $resultado['nome'] ?></h3>

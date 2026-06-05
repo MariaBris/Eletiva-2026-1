@@ -32,7 +32,7 @@
 ?>
 
 <div class="container-md mt-4 conteudo-sistema">
-    <h1>Alterar Informações do Tutor</h1>
+    <h1  class="text-center text-muted mb-4">Alterar Informações do Tutor</h1>
     <form method="post" action="alterar_tutor.php?id=<?= $resultado['id'] ?>">
         <div class="row g-3 mb-3">
             <div class="col-md-6">

@@ -3,7 +3,7 @@
 ?>
 
 <div class="container-md mt-4 conteudo-sistema">
-    <h1>Cadastro de Tutor</h1>
+    <h1 class="text-center text-muted mb-4">Cadastrar Tutor</h1>
     <form method="post">
         <div class="row g-3 mb-3">
             <div class="col-md-6">
