@@ -47,7 +47,7 @@
     }
 
     .logo-clinica {
-        max-width: 90px;
+        max-width: 45px;
         height: auto;
     }
 
@@ -70,11 +70,12 @@
 
     <div class="card shadow p-4 card-login" style="width: 100%; max-width: 400px;">
         
-        <div class="text-center mb-2">
-            <img src="logo.svg" alt="Logo Clínica" class="logo-clinica">
-        </div>
-        
-        <h5 class="text-center mb-4" style="color: var(--verde-principal);"><strong>Clínica Vet</strong></h5>
+        <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                <img src="logo.svg" alt="Logo Clínica" class="logo-clinica">
+                <h4 class="mb-0" style="color: var(--verde-principal); font-weight: 700;">Clínica Vet</h4>
+            </div>
+            
+            <h6 class="text-center text-muted mb-4">Login</h6>
 
         <form method="post">
           <div class="mb-3">
@@ -91,23 +92,32 @@
         </form>
 
         <?php
+          require_once('conexao.php');
           session_start();
           if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $email = $_POST['email'];
             $senha = $_POST['senha'];
-            if($email == "adm@adm" && $senha == '123'){
-              $_SESSION['nome'] = 'Administrador';
-              $_SESSION['acesso'] = true; 
-              header('Location: principal.php');
-            } else {
-              $_SESSION['acesso'] = false;
-              echo "<p class='text-danger text-center mt-3 mb-0'>Dados incorretos!</p>";
+            try{
+              $stmt = $pdo->prepare("SELECT * FROM usuario WHERE email = ?");
+              $stmt->execute([$email]);
+              $usuario = $stmt->fetch();
+              $senha_correta = password_verify($senha, $usuario['senha']);
+              if($usuario && $senha_correta){
+                $_SESSION['nome'] = $usuario['nome'];
+                $_SESSION['acesso'] = true; 
+                header('Location: principal.php');
+              } else {
+                $_SESSION['acesso'] = false;
+                echo "<p class='text-danger text-center mt-3 mb-0'>Dados incorretos!</p>";
+              }
+            } catch(exception $e){
+              echo "Erro: ".$e->getMessage();
             }
           }
         ?>
 
         <p class="text-center mt-4 mb-0 small">
-          Não tem conta? <a href="cadastro.php" class="link-cadastro">Cadastre-se</a>
+          Não tem conta? <a href="cadastrar_usuario.php" class="link-cadastro">Cadastre-se</a>
         </p>
     </div>
 </div>
