@@ -44,13 +44,14 @@
 <div class="container-md mt-4 conteudo-sistema">
     <h1 class="text-center text-muted mb-4">Alterar informações do Pet</h1>
     <form method="post" action="alterar_pet.php?id=<?= $resultado['id'] ?>">
+
         <div class="row g-3 mb-3">
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <label for="Nome" class="form-label fw-bold">Nome</label>
                 <input value="<?= $resultado['nome']?>" type="text" class="form-control" id="Nome" name="nome"
                     required="">
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label for="especie" class="form-label fw-bold">Espécie</label>
                 <select class="form-select" id="especie" name="especie" required="">
                     <option value="Gato" <?= $resultado['especie'] == 'Gato' ? 'selected' : ''?>>Gato</option>
@@ -60,19 +61,19 @@
                     </option>
                 </select>
             </div>
+        </div>
+
+        <div class="row g-3 mb-3 align-items-center">
             <div class="col-md-3">
                 <label for="raca" class="form-label fw-bold">Raça</label>
                 <input value="<?= $resultado['raca'] ?>" type="text" class="form-control" id="raca" name="raca"
                     required="">
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <label for="cor" class="form-label fw-bold">Cor</label>
                 <input value="<?= $resultado['cor'] ?>" type="text" class="form-control" id="cor" name="cor"
                     required="">
             </div>
-        </div>
-
-        <div class="row g-3 mb-3 align-items-center">
             <div class="col-md-3">
                 <label class="form-label fw-bold d-block">Sexo</label>
                 <div class="form-check form-check-inline mt-1">
@@ -86,7 +87,6 @@
                     <label for="macho" class="form-check-label">Macho</label>
                 </div>
             </div>
-
             <div class="col-md-3">
                 <label class="form-label fw-bold d-block">Castrado?</label>
                 <div class="form-check form-check-inline mt-1">
@@ -100,22 +100,20 @@
                     <label for="castrado_nao" class="form-check-label">Não</label>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-3">
-                <label for="idade" class="form-label fw-bold">Idade (em anos)</label>
-                <input value="<?= $resultado['idade'] ?>" type="number" class="form-control" id="idade" name="idade"
-                    min="0" required="">
-            </div>
-
+        <div class="row g-3 mb-4">
             <div class="col-md-3">
                 <label for="peso" class="form-label fw-bold">Peso (kg)</label>
                 <input value="<?= $resultado['peso'] ?>" type="number" class="form-control" id="peso" name="peso"
                     step="0.01" min="0" required="">
             </div>
-        </div>
-
-        <div class="row mb-3">
-            <div class="col-md-12">
+            <div class="col-md-3">
+                <label for="idade" class="form-label fw-bold">Idade (em anos)</label>
+                <input value="<?= $resultado['idade'] ?>" type="number" class="form-control" id="idade" name="idade"
+                    min="0" required="">
+            </div>
+            <div class="col-md-6">
                 <label for="id_tutor" class="form-label fw-bold">Tutor Responsável</label>
                 <select class="form-select" id="id_tutor" name="id_tutor" required="">
                     <option value="">Selecione um tutor...</option>

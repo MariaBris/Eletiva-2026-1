@@ -14,11 +14,11 @@
 
     <form method="post">
         <div class="row g-3 mb-3">
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <label for="Nome" class="form-label fw-bold">Nome</label>
                 <input type="text" class="form-control" id="Nome" name="nome" placeholder="Nome do pet" required="">
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label for="especie" class="form-label fw-bold">Espécie</label>
                 <select class="form-select" id="especie" name="especie" required="">
                     <option value="" selected disabled>Selecione a espécie...</option>
@@ -28,18 +28,18 @@
                     <option value="Hamsters">Hamsters</option>
                 </select>
             </div>
+        </div>
+
+        <div class="row g-3 mb-3 align-items-center">
             <div class="col-md-3">
                 <label for="raca" class="form-label fw-bold">Raça</label>
                 <input type="text" class="form-control" id="raca" name="raca" placeholder="Ex: Poodle, SRD" required="">
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <label for="cor" class="form-label fw-bold">Cor</label>
                 <input type="text" class="form-control" id="cor" name="cor" placeholder="Ex: Preta, Caramelo"
                     required="">
             </div>
-        </div>
-
-        <div class="row g-3 mb-3 align-items-center">
             <div class="col-md-3">
                 <label class="form-label fw-bold d-block">Sexo</label>
                 <div class="form-check form-check-inline mt-1">
@@ -51,7 +51,6 @@
                     <label for="macho" class="form-check-label">Macho</label>
                 </div>
             </div>
-
             <div class="col-md-3">
                 <label class="form-label fw-bold d-block">Castrado?</label>
                 <div class="form-check form-check-inline mt-1">
@@ -65,22 +64,20 @@
                     <label for="castrado_nao" class="form-check-label">Não</label>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-3">
-                <label for="idade" class="form-label fw-bold">Idade (em anos)</label>
-                <input type="number" class="form-control" id="idade" name="idade" placeholder="Ex: 3" min="0"
-                    required="">
-            </div>
-
+        <div class="row g-3 mb-4">
             <div class="col-md-3">
                 <label for="peso" class="form-label fw-bold">Peso (kg)</label>
                 <input type="number" class="form-control" id="peso" name="peso" placeholder="Ex: 8.50" step="0.01"
                     min="0" required="">
             </div>
-        </div>
-
-        <div class="row g-3 mb-3">
-            <div class="col-md-12">
+            <div class="col-md-3">
+                <label for="idade" class="form-label fw-bold">Idade (em anos)</label>
+                <input type="number" class="form-control" id="idade" name="idade" placeholder="Ex: 3" min="0"
+                    required="">
+            </div>
+            <div class="col-md-6">
                 <label for="id_tutor" class="form-label fw-bold">Tutor Responsável</label>
                 <select class="form-select" id="id_tutor" name="id_tutor" required="">
                     <option value="" selected disabled>Selecione um tutor...</option>

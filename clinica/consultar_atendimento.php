@@ -16,21 +16,28 @@
     <h1 class="text-center text-muted mb-4">Consultar Atendimento</h1>
 
     <form method="post" id="formExcluir" action="consultar_atendimento.php?id=<?= $resultado['id'] ?>">
-        <h3 class="col text-center mb-4"><?= $resultado['nome'] ?></h3>
-
-        <div class="row g-3 mb-4">
-            <div class="col-md-4">
-                <p><strong>Procedimento:</strong> <?= $resultado['nome'] ?></p>
+        
+        <div class="card border-0 shadow-sm overflow-hidden">
+            <div class="p-3 text-white text-center" style="background-color: var(--verde-principal);">
+                <h3 class="mb-0"><?= $resultado['nome'] ?></h3>
             </div>
-            <div class="col-md-8">
-                <p><strong>Descrição: </strong> <?= $resultado['descricao'] ?></p>
+            
+            <div class="card-body p-4">
+                <div class="row g-4 mb-2">
+                    <div class="col-md-12 py-2 border-bottom">
+                        <label class="text-muted small fw-bold text-uppercase">Procedimento</label>
+                        <p class="mb-0 fs-5"><?= $resultado['nome'] ?></p>
+                    </div>
+                    <div class="col-md-12 py-2 border-bottom">
+                        <label class="text-muted small fw-bold text-uppercase">Descrição</label>
+                        <p class="mb-0 fs-5"><?= $resultado['descricao'] ?></p>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col text-end">
+            <div class="card-footer bg-light p-3 text-end">
                 <a href="atendimentos.php" class="btn btn-salvar">Voltar</a>
-                <button type="button" onclick="confirmarExclusao()" class="btn btn-danger">Excluir</button>
+                <button type="button" onclick="confirmarExclusao()" class="btn btn-danger ms-2">Excluir</button>
             </div>
         </div>
     </form>
@@ -57,7 +64,7 @@
 function confirmarExclusao() {
     Swal.fire({
         title: "Deseja excluir?",
-        text: "Esta ação nao pode ser desfeita!",
+        text: "Esta ação não pode ser desfeita!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",

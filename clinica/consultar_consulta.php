@@ -25,30 +25,39 @@
     <h1 class="text-center text-muted mb-4">Consultar Agendamento</h1>
 
     <form method="post" id="formExcluir" action="consultar_consulta.php?id=<?= $resultado['id'] ?>">
-        <h3 class="col text-center mb-4">Consulta #<?= str_pad($resultado['id'], 4, '0', STR_PAD_LEFT) ?></h3>
+        
+        <div class="card border-0 shadow-sm overflow-hidden">
+            <div class="p-3 text-white text-center" style="background-color: var(--verde-principal);">
+                <h3 class="mb-0">Consulta</h3>
+            </div>
+            
+            <div class="card-body p-4">
+                <div class="row g-4 mb-3">
+                    <div class="col-md-4 py-2 border-bottom">
+                        <label class="text-muted small fw-bold text-uppercase">Data / Hora</label>
+                        <p class="mb-0 fs-5"><?= date('d/m/Y H:i', strtotime($resultado['data_consulta'])) ?></p>
+                    </div>
+                    <div class="col-md-4 py-2 border-bottom">
+                        <label class="text-muted small fw-bold text-uppercase">Pet Paciente</label>
+                        <p class="mb-0 fs-5"><?= $resultado['nome_pet'] ?></p>
+                    </div>
+                    <div class="col-md-4 py-2 border-bottom">
+                        <label class="text-muted small fw-bold text-uppercase">Tutor</label>
+                        <p class="mb-0 fs-5"><?= $resultado['nome_tutor'] ?></p>
+                    </div>
+                </div>
 
-        <div class="row g-3 mb-3">
-            <div class="col-md-4">
-                <p><strong>Data / Hora:</strong> <?= date('d/m/Y H:i', strtotime($resultado['data_consulta'])) ?></p>
+                <div class="row g-4 mb-2">
+                    <div class="col-md-12 py-2 border-bottom">
+                        <label class="text-muted small fw-bold text-uppercase">Procedimento Agendado</label>
+                        <p class="mb-0 fs-5"><?= $resultado['nome_atendimento'] ?></p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-                <p><strong>Pet Paciente:</strong> <?= $resultado['nome_pet'] ?></p>
-            </div>
-            <div class="col-md-4">
-                <p><strong>Tutor Responsável:</strong> <?= $resultado['nome_tutor'] ?></p>
-            </div>
-        </div>
 
-        <div class="row g-3 mb-4">
-            <div class="col-md-12">
-                <p><strong>Procedimento Agendado:</strong> <?= $resultado['nome_atendimento'] ?></p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col text-end">
+            <div class="card-footer bg-light p-3 text-end">
                 <a href="consultas.php" class="btn btn-salvar">Voltar</a>
-                <button type="button" onclick="confirmarExclusao()" class="btn btn-danger">Excluir</button>
+                <button type="button" onclick="confirmarExclusao()" class="btn btn-danger ms-2">Excluir</button>
             </div>
         </div>
     </form>
