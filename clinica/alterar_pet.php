@@ -19,7 +19,7 @@
             if($stmt->execute([$nome, $especie, $raca, $cor, $castrado, $peso, $sexo, $idade, $id_tutor, $id])){
                 $mensagem = "<p>Alteração realizada!</p>";
             } else {
-                $mensagem = "<p>Erro ao alterar! Tente novamente</p>";
+                $mensagem = "<p>Erro ao alterar! Tente novamente.</p>";
             }
         } catch(Exception $e){
           echo "Erro: ".$e->getMessage();
@@ -119,7 +119,7 @@
         </div>
 
         <div class="text-end mt-4">
-            <button type="submit" class="btn btn-salvar">Salvar Alterações</button>
+            <button type="submit" class="btn btn-salvar">Salvar</button>
             <a href="pets.php" class="btn btn-danger">Cancelar</a>
         </div>
     </form>

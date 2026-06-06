@@ -14,7 +14,7 @@
 
 <div class="container-fluid py-3 conteudo-sistema">
     <h2 class="text-center text-muted mb-4">Pets</h2>
-    <a href="cadastrar_pet.php" class="btn btn-success mb-3 btn-novo">Novo Registro</a>
+    <a href="cadastrar_pet.php" class="btn btn-success mb-3 btn-novo">Novo</a>
     
     <div class="table-responsive">
         <table class="table table-hover table-striped align-middle">

@@ -69,10 +69,11 @@ ENGINE = InnoDB;
 -- Table `mydb`.`atendimento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`atendimento` (
-  `idatendimento` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idatendimento`))
+  `preco` DOUBLE NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -80,17 +81,18 @@ ENGINE = InnoDB;
 -- Table `mydb`.`consulta`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`consulta` (
-  `idconsulta` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `data_consulta` DATETIME NOT NULL,
-  `atendimento_idatendimento` INT NOT NULL,
+  `atendimento_id` INT NOT NULL,
   `pet_idpet` INT NOT NULL,
   `pet_tutor_idtutor` INT NOT NULL,
-  PRIMARY KEY (`idconsulta`, `atendimento_idatendimento`, `pet_idpet`, `pet_tutor_idtutor`),
-  INDEX `fk_consulta_atendimento1_idx` (`atendimento_idatendimento` ASC),
+  `subtotal` DOUBLE NOT NULL,
+  PRIMARY KEY (`id`, `atendimento_id`, `pet_idpet`, `pet_tutor_idtutor`),
+  INDEX `fk_consulta_atendimento1_idx` (`atendimento_id` ASC),
   INDEX `fk_consulta_pet1_idx` (`pet_idpet` ASC, `pet_tutor_idtutor` ASC),
   CONSTRAINT `fk_consulta_atendimento1`
-    FOREIGN KEY (`atendimento_idatendimento`)
-    REFERENCES `mydb`.`atendimento` (`idatendimento`)
+    FOREIGN KEY (`atendimento_id`)
+    REFERENCES `mydb`.`atendimento` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_consulta_pet1`

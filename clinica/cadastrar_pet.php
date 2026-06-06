@@ -87,7 +87,7 @@
         </div>
 
         <div class="text-end mt-4">
-            <button type="submit" class="btn btn-salvar">Cadastrar Pet</button>
+            <button type="submit" class="btn btn-salvar">Salvar</button>
             <a href="pets.php" class="btn btn-danger">Cancelar</a>
         </div>
     </form>

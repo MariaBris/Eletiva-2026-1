@@ -36,7 +36,7 @@
         </div>
 
         <div class="text-end mt-4">
-            <button type="submit" class="btn btn-salvar">Cadastrar Tutor</button>
+            <button type="submit" class="btn btn-salvar">Salvar</button>
             <a href="tutores.php" class="btn btn-danger">Cancelar</a>
         </div>
     </form>
