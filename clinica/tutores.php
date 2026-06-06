@@ -20,23 +20,26 @@
                     <th>Nome</th>
                     <th>Endereço</th>
                     <th>Bairro</th>
-                    <th>Tel.</th>
-                    <th  class="text-center" style="width: 200px;">Ações</th>
+                    <th>Telefone</th>
+                    <th class="text-center" style="width: 200px;">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach($resultado as $r): ?>
-                    <tr>
-                        <td><?= $r['nome'] ?></td>
-                        <td><?= $r['endereco'] ?></td>
-                        <td><?= $r['bairro'] ?></td>
-                        <td><?= $r['telefone'] ?></td>
-                        <td class="text-end">
-                            <a href="alterar_tutor.php?id=<?= $r['id'] ?>" class="btn btn-sm btn-editar-roxo me-1">Editar</a>
-                            <a href="consultar_tutor.php?id=<?= $r['id'] ?>" class="btn btn-sm btn-consultar-azul">Consultar</a>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
+                <tr>
+                    <td><?= $r['nome'] ?></td>
+                    <td><?= $r['endereco'] ?></td>
+                    <td><?= $r['bairro'] ?></td>
+                    <td><?= $r['telefone'] ?></td>
+                    <td>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="alterar_tutor.php?id=<?= $r['id'] ?>" class="btn btn-sm btn-editar-roxo">Editar</a>
+                            <a href="consultar_tutor.php?id=<?= $r['id'] ?>"
+                                class="btn btn-sm btn-consultar-azul">Consultar</a>
+                        </div>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

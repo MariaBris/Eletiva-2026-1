@@ -11,7 +11,7 @@
 ?>
 
 <div class="container-fluid py-3 conteudo-sistema">
-    <h2  class="text-center text-muted mb-4">Serviços e Atendimentos</h2>
+    <h2 class="text-center text-muted mb-4">Serviços e Atendimentos</h2>
     <a href="cadastrar_atendimento.php" class="btn btn-success mb-3 btn-novo">Novo Atendimento</a>
 
     <div class="table-responsive">
@@ -20,8 +20,7 @@
                 <tr>
                     <th>Procedimento</th>
                     <th>Descrição</th>
-                    <th>Preço</th>
-                    <th>Ações</th>
+                    <th class="text-center">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,9 +28,8 @@
                         <tr>
                             <td><?= $r['nome'] ?></td>
                             <td><?= $r['descricao'] ?></td>
-                            <td>R$ <?= $r['preco'] ?></td>
                             <td>
-                                <div class="d-flex gap-2">
+                                <div class="text-center">
                                     <a href="alterar_atendimento.php?id=<?= $r['id'] ?>" class="btn btn-sm btn-editar-roxo">Editar</a>
                                     <a href="consultar_atendimento.php?id=<?= $r['id'] ?>" class="btn btn-sm btn-consultar-azul">Consultar</a>
                                 </div>

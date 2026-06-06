@@ -61,7 +61,7 @@
     .text-link:hover {
         color: var(--verde-hover);
     }
-    
+
     .link-cadastro {
         color: var(--verde-principal);
         text-decoration: none;
@@ -107,7 +107,7 @@
             <?php
           if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             require_once('conexao.php');
-            $nome = $_POST['nome'];
+            $nome = strtoupper($_POST['nome']);
             $email = $_POST['email'];
             $senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);
             try{

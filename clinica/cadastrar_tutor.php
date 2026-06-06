@@ -8,7 +8,8 @@
         <div class="row g-3 mb-3">
             <div class="col-md-6">
                 <label for="Nome" class="form-label fw-bold">Nome</label>
-                <input type="text" class="form-control" id="Nome" name="nome" placeholder="Nome Completo do Tutor" required="">
+                <input type="text" class="form-control" id="Nome" name="nome" placeholder="Nome Completo do Tutor"
+                    required="">
             </div>
             <div class="col-md-3">
                 <label for="CPF" class="form-label fw-bold">CPF</label>
@@ -16,14 +17,16 @@
             </div>
             <div class="col-md-3">
                 <label for="telefone" class="form-label fw-bold">Telefone</label>
-                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Somente números" required="">
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Somente números"
+                    required="">
             </div>
         </div>
 
         <div class="row g-3 mb-3">
             <div class="col-md-6">
                 <label for="endereco" class="form-label fw-bold">Endereço</label>
-                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua Pernambuco, 999" required="">
+                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua Pernambuco, 999"
+                    required="">
             </div>
             <div class="col-md-3">
                 <label for="Bairro" class="form-label fw-bold">Bairro</label>

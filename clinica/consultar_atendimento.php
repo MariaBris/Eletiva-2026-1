@@ -14,7 +14,7 @@
 
 <div class="container-md mt-4 conteudo-sistema">
     <h1 class="text-center text-muted mb-4">Consultar Atendimento</h1>
-    
+
     <form method="post" id="formExcluir" action="consultar_atendimento.php?id=<?= $resultado['id'] ?>">
         <h3 class="col text-center mb-4"><?= $resultado['nome'] ?></h3>
 
@@ -22,11 +22,8 @@
             <div class="col-md-4">
                 <p><strong>Procedimento:</strong> <?= $resultado['nome'] ?></p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <p><strong>Descrição: </strong> <?= $resultado['descricao'] ?></p>
-            </div>
-            <div class="col-md-2">
-                <p><strong>Preço (R$):</strong> <?= $resultado['preco'] ?></p>
             </div>
         </div>
 
@@ -57,22 +54,22 @@
 </div>
 
 <script>
-    function confirmarExclusao(){
-        Swal.fire({
-            title: "Deseja excluir?",
-            text: "Esta ação nao pode ser desfeita!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6",
-            confirmButtonText: "Sim, excluir!",
-            cancelButtonText: "Cancelar"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('formExcluir').submit();
-            }
-        });
-    }
+function confirmarExclusao() {
+    Swal.fire({
+        title: "Deseja excluir?",
+        text: "Esta ação nao pode ser desfeita!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Sim, excluir!",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('formExcluir').submit();
+        }
+    });
+}
 </script>
 
 <?php

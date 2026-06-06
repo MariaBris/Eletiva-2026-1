@@ -15,13 +15,14 @@
 <div class="container-fluid py-3 conteudo-sistema">
     <h2 class="text-center text-muted mb-4">Pets</h2>
     <a href="cadastrar_pet.php" class="btn btn-success mb-3 btn-novo">Novo</a>
-    
+
     <div class="table-responsive">
         <table class="table table-hover table-striped align-middle">
             <thead>
                 <tr>
                     <th>Nome</th>
                     <th>Espécie</th>
+                    <th>Raça</th>
                     <th>Tutor Responsável</th>
                     <th class="text-center" style="width: 200px;">Ações</th>
                 </tr>
@@ -31,10 +32,15 @@
                 <tr>
                     <td><?= $r['nome'] ?></td>
                     <td><?= $r['especie'] ?></td>
+                    <td><?= $r['raca'] ?></td>
                     <td><?= $r['nome_tutor'] ?></td>
-                    <td class="text-end">
-                        <a href="alterar_pet.php?id=<?= $r['id_pet'] ?>" class="btn btn-sm btn-editar-roxo me-1">Editar</a>
-                        <a href="consultar_pet.php?id=<?= $r['id_pet'] ?>" class="btn btn-sm btn-consultar-azul">Consultar</a>
+                    <td>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="alterar_pet.php?id=<?= $r['id_pet'] ?>"
+                                class="btn btn-sm btn-editar-roxo">Editar</a>
+                            <a href="consultar_pet.php?id=<?= $r['id_pet'] ?>"
+                                class="btn btn-sm btn-consultar-azul">Consultar</a>
+                        </div>
                     </td>
                 </tr>
                 <?php endforeach; ?>

@@ -14,7 +14,7 @@
 
 <div class="container-md mt-4 conteudo-sistema">
     <h1 class="text-center text-muted mb-4">Consultar Tutor</h1>
-    
+
     <form method="post" id="formExcluir" action="consultar_tutor.php?id=<?= $resultado['id'] ?>">
         <h3 class="col text-center mb-4"><?= $resultado['nome'] ?></h3>
         <div class="row g-3 mb-3">
@@ -65,24 +65,23 @@
     ?>
 </div>
 <script>
-    function confirmarExclusao(){
-        Swal.fire({
-            title: "Deseja excluir?",
-            text: "Esta ação nao pode ser desfeita!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6",
-            confirmButtonText: "Sim, excluir!",
-            cancelButtonText: "Cancelar"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('formExcluir').submit();
-            }
-        });
-    }
+function confirmarExclusao() {
+    Swal.fire({
+        title: "Deseja excluir?",
+        text: "Esta ação nao pode ser desfeita!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Sim, excluir!",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('formExcluir').submit();
+        }
+    });
+}
 </script>
 
 <?php
     require_once('rodape.php');
-?>
