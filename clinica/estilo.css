@@ -17,7 +17,7 @@ body {
 }
 
 /* ==========================================================================
-   ESTILOS DA NAVBAR (MANTIDOS EXATAMENTE COMO VOCÊ TINHA)
+   ESTILOS DA NAVBAR
    ========================================================================= */
 .navbar-custom {
     background-color: var(--verde-principal);
@@ -53,7 +53,7 @@ body {
 /* ==========================================================================
    CAMADA PROTETORA BRANCA (APENAS PARA CONTEÚDO, NÃO AFETA A NAVBAR)
    ========================================================================== */
-/* Criamos uma classe específica para aplicar o fundo branco nos seus blocos */
+/* Classe específica para aplicar o fundo branco seus blocos */
 .conteudo-sistema {
     background-color: rgba(255, 255, 255, 0.96) !important;
     border-radius: 8px;
