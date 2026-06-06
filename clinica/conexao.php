@@ -1,6 +1,6 @@
 <?php
 
-    $dominio = "mysql:host=localhost;port=3307;dbname=mydb";
+    $dominio = "mysql:host=localhost;port=3306;dbname=mydb";
     $usuario = "root";
     $senha = "";
 
